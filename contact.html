@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – CalcBeast</title>
+<meta name="description" content="Contact CalcBeast for questions, suggestions, or feedback about our free online calculators.">
+<link rel="canonical" href="https://calcbeast.vercel.app/contact.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header><h1>Contact Us</h1><a href="index.html" class="back-home">← Back to Home</a></header>
+<div style="max-width:700px;margin:auto;padding:30px">
+<p>We'd love to hear from you! Whether you have a question, found a bug, want to suggest a new calculator, or just want to say hello — reach out anytime.</p>
+<h2>Get In Touch</h2>
+<p>📧 <strong>Email:</strong> support@calcbeast.com</p>
+<p>We usually reply within <strong>24–48 hours</strong> on business days.</p>
+<h2>Send Us a Message</h2>
+<div style="background:#f8f9fa;padding:24px;border-radius:12px;margin-top:16px">
+<div style="margin-bottom:16px">
+<label style="display:block;font-weight:600;margin-bottom:6px">Your Name</label>
+<input type="text" id="cName" placeholder="Enter your name" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:15px;box-sizing:border-box">
+</div>
+<div style="margin-bottom:16px">
+<label style="display:block;font-weight:600;margin-bottom:6px">Your Email</label>
+<input type="email" id="cEmail" placeholder="Enter your email" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:15px;box-sizing:border-box">
+</div>
+<div style="margin-bottom:16px">
+<label style="display:block;font-weight:600;margin-bottom:6px">Subject</label>
+<select id="cSubject" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:15px;box-sizing:border-box">
+<option>General Question</option>
+<option>Bug Report</option>
+<option>Calculator Suggestion</option>
+<option>Business Inquiry</option>
+<option>Other</option>
+</select>
+</div>
+<div style="margin-bottom:16px">
+<label style="display:block;font-weight:600;margin-bottom:6px">Message</label>
+<textarea id="cMsg" placeholder="Type your message here..." rows="5" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:15px;box-sizing:border-box;resize:vertical"></textarea>
+</div>
+<button onclick="submitForm()" style="background:#007bff;color:white;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;font-weight:600">Send Message</button>
+<p id="cResult" style="margin-top:12px;font-weight:600"></p>
+</div>
+<h2 style="margin-top:32px">FAQ</h2>
+<h3>How long before I get a reply?</h3>
+<p>We typically respond within 24–48 hours on business days.</p>
+<h3>Can I suggest a new calculator?</h3>
+<p>Absolutely! We love user suggestions. Tell us what calculator you need and we'll consider adding it.</p>
+<h3>I found a calculation error. How do I report it?</h3>
+<p>Select "Bug Report" above and mention the calculator name and values you entered so we can reproduce and fix the issue quickly.</p>
+</div>
+<footer class="footer">
+<div class="footer-container">
+<div><h3>CalcBeast</h3><p>Free online calculators for finance, health, mathematics and everyday utilities.</p></div>
+<div><h3>Important Links</h3>
+<a href="about.html">About</a><br><a href="privacy.html">Privacy Policy</a><br>
+<a href="disclaimer.html">Disclaimer</a><br><a href="contact.html">Contact</a>
+</div>
+</div>
+<p class="footer-copy">© 2026 CalcBeast – Free Online Calculator Tools</p>
+</footer>
+<script>
+function submitForm(){
+  var n=document.getElementById('cName').value;
+  var e=document.getElementById('cEmail').value;
+  var m=document.getElementById('cMsg').value;
+  var r=document.getElementById('cResult');
+  if(!n||!e||!m){r.style.color='red';r.innerText='Please fill all fields.';return;}
+  r.style.color='green';
+  r.innerText='Thank you '+n+'! Your message has been sent. We will reply to '+e+' within 24-48 hours.';
+}
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
