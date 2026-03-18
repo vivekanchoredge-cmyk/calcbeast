@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Advanced Mortgage Calculator – Monthly Home Loan Payment</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Advanced mortgage calculator to estimate monthly home loan payment, total interest and total payment." name="description"/><link href="https://calcbeast.vercel.app/calculators/mortgage-calculator.html" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/mortgage-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Advanced Mortgage Calculator – Monthly Home Loan Payment" name="twitter:title"/><meta content="Advanced mortgage calculator to estimate monthly home loan payment, total interest and total payment." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Advanced Mortgage Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/mortgage-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Advanced Mortgage Calculator</h1><p>Estimate monthly mortgage payment and loan details.</p><label>Loan Amount</label>
+<br/>
+<input id="loan" placeholder="Loan Amount" type="number"/>
+<br/><br/>
+<label>Interest Rate (%)</label>
+<br/>
+<input id="rate" placeholder="Interest Rate" type="number"/>
+<br/><br/>
+<label>Loan Duration (Years)</label>
+<br/>
+<input id="years" placeholder="Years" type="number"/>
+<br/><br/>
+<button onclick="calculateMortgage()">Calculate</button>
+<br/><br/>
+<h2>Loan Summary</h2><ul><li><strong>Monthly Payment:</strong> <span id="monthly"></span></li><li><strong>Total Interest:</strong> <span id="interest"></span></li><li><strong>Total Payment:</strong> <span id="total"></span></li></ul><script>
+
+function calculateMortgage(){
+
+let loan=document.getElementById("loan").value;
+
+let rate=document.getElementById("rate").value/100/12;
+
+let months=document.getElementById("years").value*12;
+
+let payment=(loan*rate*Math.pow(1+rate,months))/(Math.pow(1+rate,months)-1);
+
+let totalPayment=payment*months;
+
+let totalInterest=totalPayment-loan;
+
+document.getElementById("monthly").innerHTML=payment.toFixed(2);
+
+document.getElementById("interest").innerHTML=totalInterest.toFixed(2);
+
+document.getElementById("total").innerHTML=totalPayment.toFixed(2);
+
+}
+
+</script><script src="../js/main.js"></script>
+<div class="content-section">

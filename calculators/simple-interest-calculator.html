@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Simple Interest Calculator – Calculate Interest &amp; Total Amount</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free simple interest calculator to calculate interest amount and total amount based on principal, rate and time." name="description"/><link href="https://calcbeast.vercel.app/calculators/simple-interest-calculator.html" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/simple-interest-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Simple Interest Calculator – Calculate Interest &amp; Total Amount" name="twitter:title"/><meta content="Free simple interest calculator to calculate interest amount and total amount based on principal, rate and time." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Simple Interest Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/simple-interest-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Simple Interest Calculator</h1><p>Calculate simple interest and total amount.</p><label>Principal Amount</label>
+<br/>
+<input id="principal" type="number"/>
+<br/><br/>
+<label>Interest Rate (%)</label>
+<br/>
+<input id="rate" type="number"/>
+<br/><br/>
+<label>Time (Years)</label>
+<br/>
+<input id="time" type="number"/>
+<br/><br/>
+<button onclick="calculateSI()">Calculate</button>
+<br/><br/>
+<div id="result"></div><ul><li><strong>Simple Interest:</strong> <span id="interest"></span></li><li><strong>Total Amount:</strong> <span id="total"></span></li><li><strong>Monthly Interest:</strong> <span id="monthly"></span></li></ul><table><tr>
+<th>Year</th>
+<th>Interest Earned</th>
+</tr><tbody id="table"></tbody></table><script>
+
+function calculateSI(){
+
+let p=parseFloat(document.getElementById("principal").value)
+
+let r=parseFloat(document.getElementById("rate").value)
+
+let t=parseFloat(document.getElementById("time").value)
+
+let interest=(p*r*t)/100
+
+let total=p+interest
+
+let monthly=interest/(t*12)
+
+document.getElementById("interest").innerHTML=interest.toFixed(2)
+
+document.getElementById("total").innerHTML=total.toFixed(2)
+
+document.getElementById("monthly").innerHTML=monthly.toFixed(2)
+
+let table=""
+
+for(let i=1;i<=t;i++){
+
+let yearly=(p*r)/100
+
+table+="<tr><td>"+i+"</td><td>"+yearly.toFixed(2)+"</td></tr>"
+
+}
+
+document.getElementById("table").innerHTML=table
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Simple Interest Calculator",
+"applicationCategory":"FinanceApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/simple-interest-calculator.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the formula for simple interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simple Interest = (Principal \u00d7 Rate \u00d7 Time) / 100."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is simple interest used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simple interest is commonly used for personal loans, short-term borrowing and basic financial calculations."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

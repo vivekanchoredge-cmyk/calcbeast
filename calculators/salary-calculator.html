@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Advanced Salary Calculator – Net Salary &amp; Deductions</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Advanced salary calculator to calculate monthly salary, tax deduction, PF deduction and net take-home salary." name="description"/><link href="https://calcbeast.vercel.app/calculators/salary-calculator.html" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+.bar{
+width:100%;
+height:20px;
+background:#ddd;
+border-radius:5px;
+margin-top:10px;
+}
+
+.fill{
+height:20px;
+background:#4CAF50;
+width:0%;
+border-radius:5px;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/salary-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Advanced Salary Calculator – Net Salary &amp; Deductions" name="twitter:title"/><meta content="Advanced salary calculator to calculate monthly salary, tax deduction, PF deduction and net take-home salary." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Advanced Salary Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/salary-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Advanced Salary Calculator</h1><p>Calculate your net salary after tax and PF deductions.</p><label>Annual CTC</label>
+<br/>
+<input id="ctc" type="number"/>
+<br/><br/>
+<label>Tax (%)</label>
+<br/>
+<input id="tax" type="number"/>
+<br/><br/>
+<label>PF (%)</label>
+<br/>
+<input id="pf" type="number"/>
+<br/><br/>
+<button onclick="calculateSalary()">Calculate Salary</button>
+<br/><br/>
+<div id="summary"></div><div class="bar">
+<div class="fill" id="bar"></div>
+</div><table><tr>
+<th>Salary Component</th>
+<th>Amount</th>
+</tr><tr>
+<td>Annual Net Salary</td>
+<td id="annual"></td>
+</tr><tr>
+<td>Monthly Salary</td>
+<td id="monthly"></td>
+</tr><tr>
+<td>Tax Deduction</td>
+<td id="taxAmount"></td>
+</tr><tr>
+<td>PF Deduction</td>
+<td id="pfAmount"></td>
+</tr><tr>
+<td>Total Take Home</td>
+<td id="takehome"></td>
+</tr></table><script>
+
+function calculateSalary(){
+
+let ctc=parseFloat(document.getElementById("ctc").value)
+
+let tax=parseFloat(document.getElementById("tax").value)
+
+let pf=parseFloat(document.getElementById("pf").value)
+
+let taxAmount=(ctc*tax)/100
+
+let pfAmount=(ctc*pf)/100
+
+let netAnnual=ctc-taxAmount-pfAmount
+
+let monthly=netAnnual/12
+
+document.getElementById("annual").innerHTML=netAnnual.toFixed(2)
+
+document.getElementById("monthly").innerHTML=monthly.toFixed(2)
+
+document.getElementById("taxAmount").innerHTML=taxAmount.toFixed(2)
+
+document.getElementById("pfAmount").innerHTML=pfAmount.toFixed(2)
+
+document.getElementById("takehome").innerHTML=netAnnual.toFixed(2)
+
+document.getElementById("summary").innerHTML=
+"Your monthly take-home salary is "+monthly.toFixed(2)
+
+let percent=(netAnnual/ctc)*100
+
+document.getElementById("bar").style.width=percent+"%"
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Salary Calculator",
+"applicationCategory":"FinanceApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/salary-calculator.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is CTC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CTC means Cost to Company and represents the total salary package offered by an employer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is take-home salary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take-home salary is the amount received after tax and other deductions."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

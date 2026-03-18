@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<title>SIP + Lump Sum Investment Calculator (Add Extra Investment Anytime) | CalcBeast</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Free SIP + Lump Sum investment calculator. Add additional lump sum investment in any month or year and calculate SIP returns instantly with detailed year-wise breakdown." name="description"/>
+<link href="https://calcbeast.vercel.app/calculators/sip-lumpsum-calculator.html" rel="canonical"/>
+<!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/>
+<style>
+  .calc-wrapper {
+    max-width: 860px;
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+  .section-box {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .dark .section-box {
+    background: #1e1e1e;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .section-box h2 {
+    text-align: left;
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .form-group {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+  }
+  .dark .form-group label { color: #bbb; }
+  .form-group input, .form-group select {
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #f9f9f9;
+    color: #111;
+  }
+  .dark .form-group input, .dark .form-group select {
+    background: #2a2a2a;
+    color: white;
+    border-color: #444;
+  }
+  .lumpsum-entry {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    background: #f0f4ff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 4px solid #007bff;
+  }
+  .dark .lumpsum-entry { background: #252535; }
+  .lumpsum-entry .form-group { min-width: 130px; }
+  .remove-btn {
+    background: #e74c3c !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    height: 38px;
+    align-self: flex-end;
+    border: none;
+  }
+  .remove-btn:hover { background: #c0392b !important; }
+  #add-lumpsum-btn { background: #28a745; margin-bottom: 10px; }
+  #add-lumpsum-btn:hover { background: #218838; }
+  .calc-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+  }
+  .calc-btn:hover { background: #0056d6; }
+  .summary-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .summary-card {
+    flex: 1;
+    min-width: 150px;
+    background: #f0f4ff;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border-top: 4px solid #007bff;
+  }
+  .dark .summary-card { background: #252535; }
+  .summary-card.green  { border-top-color: #28a745; }
+  .summary-card.orange { border-top-color: #fd7e14; }
+  .summary-card.purple { border-top-color: #6f42c1; }
+  .summary-card span { display: block; font-size: 12px; color: #777; margin-bottom: 6px; }
+  .dark .summary-card span { color: #aaa; }
+  .summary-card strong { font-size: 17px; color: #111; }
+  .dark .summary-card strong { color: white; }
+  .bar-wrap {
+    background: #ddd;
+    border-radius: 8px;
+    height: 22px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    display: flex;
+  }
+  .dark .bar-wrap { background: #333; }
+  .bar-fill-sip  { height: 22px; background: #007bff; transition: width 0.5s; }
+  .bar-fill-lump { height: 22px; background: #6f42c1; transition: width 0.5s; }
+  .bar-fill-gain { height: 22px; background: #28a745; transition: width 0.5s; }
+  .bar-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; margin-bottom: 16px; }
+  .bar-legend span { display: flex; align-items: center; gap: 5px; }
+  .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .dot-sip  { background: #007bff; }
+  .dot-lump { background: #6f42c1; }
+  .dot-gain { background: #28a745; }
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th { background: #007bff; color: white; padding: 10px 8px; text-align: center; }
+  td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+  .dark td { border-color: #333; }
+  tr:nth-child(even) td { background: #f8f8f8; }
+  .dark tr:nth-child(even) td { background: #252525; }
+  tr:hover td { background: #e8f0fe; }
+  .dark tr:hover td { background: #2a2a40; }
+  .lump-row td { color: #6f42c1; font-weight: 600; }
+  .dark .lump-row td { color: #a78bfa; }
+  #result-section { display: none; }
+  .back-link { display: inline-block; margin: 16px; color: #007bff; text-decoration: none; font-size: 14px; }
+  @media(max-width: 600px) {
+    .summary-card { min-width: 140px; }
+    .form-group { min-width: 100%; }
+  }
+</style>
+<meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/sip-lumpsum-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="SIP + Lump Sum Investment Calculator (Add Extra Investment Anytime) | CalcBeast" name="twitter:title"/><meta content="Free SIP + Lump Sum investment calculator. Add additional lump sum investment in any month or year and calculate SIP returns instantly with detailed year-wise breakdown." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "SIP + Lump Sum Investment Calculator (Add Extra Investment Anytime) | CalcBeast",
+      "item": "https://calcbeast.vercel.app/calculators/sip-lumpsum-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head>
+<body class="calc-page">
+<nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<div class="calc-wrapper">
+<h1 style="text-align:center; margin-bottom:6px;">SIP + Lump Sum Calculator</h1>
+<p style="text-align:center; color:#666; margin-bottom:24px;">CAGR based returns — add lump sum in any month of any year</p>
+<!-- SIP Inputs -->
+<div class="section-box">
+<h2>📅 SIP Details</h2>
+<div class="form-row">
+<div class="form-group">
+<label>Monthly SIP Amount (₹)</label>
+<input id="sip-amount" min="0" placeholder="e.g. 5000" type="number"/>
+</div>
+<div class="form-group">
+<label>Expected Annual Return (%)</label>
+<input id="annual-rate" min="0" placeholder="e.g. 12" step="0.1" type="number"/>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label>Investment Duration (Years)</label>
+<input id="total-years" max="50" min="1" placeholder="e.g. 10" type="number"/>
+</div>
+<div class="form-group">
+<label>Extra Months (0–11)</label>
+<input id="extra-months" max="11" min="0" placeholder="e.g. 6" type="number" value="0"/>
+</div>
+</div>
+</div>
+<!-- Lump Sum Entries -->
+<div class="section-box">
+<h2>💰 Lump Sum Investments (Optional)</h2>
+<p style="font-size:13px; color:#888; margin-top:-10px; margin-bottom:14px;">
+      Add lump sum in any specific Year &amp; Month of your investment period
+    </p>
+<div id="lumpsum-list"></div>
+<button id="add-lumpsum-btn" onclick="addLumpsumRow()">+ Add Lump Sum</button>
+</div>
+<!-- Calculate -->
+<button class="calc-btn" onclick="calculateAll()">🧮 Calculate Returns</button>
+<!-- Results -->
+<div id="result-section">
+<div class="section-box" style="margin-top:24px;">
+<h2>📊 Summary</h2>
+<div class="summary-cards">
+<div class="summary-card">
+<span>Total SIP Invested</span>
+<strong id="r-sip-invested">—</strong>
+</div>
+<div class="summary-card purple">
+<span>Total Lump Sum</span>
+<strong id="r-lump-invested">—</strong>
+</div>
+<div class="summary-card">
+<span>Total Invested</span>
+<strong id="r-total-invested">—</strong>
+</div>
+<div class="summary-card green">
+<span>Wealth Gained</span>
+<strong id="r-gain">—</strong>
+</div>
+<div class="summary-card orange">
+<span>Final Maturity Value</span>
+<strong id="r-maturity">—</strong>
+</div>
+</div>
+<div class="bar-wrap">
+<div class="bar-fill-sip" id="bar-sip" style="width:0%"></div>
+<div class="bar-fill-lump" id="bar-lump" style="width:0%"></div>
+<div class="bar-fill-gain" id="bar-gain" style="width:0%"></div>
+</div>
+<div class="bar-legend">
+<span><i class="dot dot-sip"></i> SIP Invested</span>
+<span><i class="dot dot-lump"></i> Lump Sum Invested</span>
+<span><i class="dot dot-gain"></i> Wealth Gained</span>
+</div>
+</div>
+<!-- Year-wise Table -->
+<div class="section-box">
+<h2>📅 Year-wise Breakdown</h2>
+<p style="font-size:12px; color:#888;">🟣 Purple rows = months with Lump Sum investment</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Month</th>
+<th>SIP Invested (Cumulative)</th>
+<th>Lump Sum (This Month)</th>
+<th>Total Invested (Cumulative)</th>
+<th>Portfolio Value</th>
+</tr>
+</thead>
+<tbody id="year-table"></tbody>
+</table>
+</div>
+</div>
+</div><!-- end result-section -->
+<!-- About -->
+<div class="section-box">
+<h2>ℹ️ About This Calculator</h2>
+<p>This calculator combines SIP (Systematic Investment Plan) with flexible Lump Sum investments. Each lump sum you add in a specific month/year gets compounded using CAGR formula for the remaining period.</p>
+<h3>Formula Used</h3>
+<p><strong>Monthly Rate (CAGR based):</strong> r = (1 + R/100)^(1/12) − 1</p>
+<p><strong>SIP Future Value:</strong> FV = P × [((1+r)^n − 1) / r] × (1+r)</p>
+<p><strong>Lump Sum:</strong> Compounded month-by-month using same r for remaining months</p>
+</div>
+<!-- FAQ -->
+<div class="section-box">
+<h2>❓ FAQ</h2>
+<h3>Can I add lump sum in any month?</h3>
+<p>Yes! You can specify exact year and month for each lump sum. Multiple lump sums in the same month are also supported.</p>
+<h3>What formula is used?</h3>
+<p>CAGR-based monthly compounding is used for all calculations.</p>
+<h3>Is SIP mandatory?</h3>
+<p>No. You can set SIP to 0 and use only lump sum investments.</p>
+<h3>What does extra months mean?</h3>
+<p>If your investment period is 10 years and 6 months, enter 10 in years and 6 in extra months.</p>
+</div>
+<!-- Related -->
+<div class="section-box">
+<h2>🔗 Related Calculators</h2>
+<ul>
+<li><a href="sip-calculator.html">SIP Calculator</a></li>
+<li><a href="sip-calculator-advanced.html">Advanced SIP Calculator</a></li>
+<li><a href="step-up-sip-calculator.html">Step Up SIP Calculator</a></li>
+<li><a href="sip-vs-lumpsum-calculator.html">SIP vs Lump Sum</a></li>
+<li><a href="compound-interest-calculator.html">Compound Interest Calculator</a></li>
+</ul>
+</div>
+</div><!-- end calc-wrapper -->
+<script src="../js-calculators/sip-lumpsum.js"></script>
+<script src="../js/main.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SIP + Lump Sum Calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "url": "https://calcbeast.vercel.app/calculators/sip-lumpsum-calculator.html",
+  "description": "Calculate SIP and Lump Sum investment returns using CAGR formula with month and year wise flexibility."
+}
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Formula Used",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly Rate (CAGR based):r = (1 + R/100)^(1/12) \u2212 1"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add lump sum in any month?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can specify exact year and month for each lump sum. Multiple lump sums in the same month are also supported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What formula is used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CAGR-based monthly compounding is used for all calculations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is SIP mandatory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You can set SIP to 0 and use only lump sum investments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does extra months mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your investment period is 10 years and 6 months, enter 10 in years and 6 in extra months."
+      }
+    }
+  ]
+}</script></body>
+</html>

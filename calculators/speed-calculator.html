@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Speed Calculator – Calculate Speed, Distance &amp; Time</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free speed calculator to calculate speed based on distance and time with km/h, m/s and mph conversion." name="description"/><link href="https://calcbeast.vercel.app/calculators/speed-calculator.html" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/speed-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Speed Calculator – Calculate Speed, Distance &amp; Time" name="twitter:title"/><meta content="Free speed calculator to calculate speed based on distance and time with km/h, m/s and mph conversion." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Speed Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/speed-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Speed Calculator</h1><p>Calculate speed based on distance and time.</p><label>Distance (km)</label>
+<br/>
+<input id="distance" type="number"/>
+<br/><br/>
+<label>Time (hours)</label>
+<br/>
+<input id="time" type="number"/>
+<br/><br/>
+<button onclick="speed()">Calculate Speed</button>
+<br/><br/>
+<div id="result"></div><ul><li><strong>Speed (km/h):</strong> <span id="kmh"></span></li><li><strong>Speed (m/s):</strong> <span id="ms"></span></li><li><strong>Speed (mph):</strong> <span id="mph"></span></li></ul><table><tr>
+<th>Distance</th>
+<th>Time</th>
+<th>Speed</th>
+</tr><tbody id="table"></tbody></table><script>
+
+function speed(){
+
+let distance=parseFloat(document.getElementById("distance").value)
+
+let time=parseFloat(document.getElementById("time").value)
+
+let kmh=distance/time
+
+let ms=kmh/3.6
+
+let mph=kmh*0.621371
+
+document.getElementById("kmh").innerHTML=kmh.toFixed(2)
+
+document.getElementById("ms").innerHTML=ms.toFixed(2)
+
+document.getElementById("mph").innerHTML=mph.toFixed(2)
+
+document.getElementById("result").innerHTML=
+"Average speed is "+kmh.toFixed(2)+" km/h"
+
+let table="<tr><td>"+distance+" km</td><td>"+time+" h</td><td>"+kmh.toFixed(2)+" km/h</td></tr>"
+
+document.getElementById("table").innerHTML=table
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Speed Calculator",
+"applicationCategory":"UtilityApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/speed-calculator.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the formula for speed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Speed = Distance \u00f7 Time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What units are used for speed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Speed can be measured in km/h, m/s and mph."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

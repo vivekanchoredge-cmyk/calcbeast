@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://calcbeast.vercel.app/calculators/sip-calculator-advanced.html" rel="canonical"/>
+<title>Advanced SIP Calculator – Monthly Investment Calculator</title>
+<meta content="Advanced SIP calculator to calculate monthly investment returns, total investment, estimated returns and total value." name="description"/>
+<!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/>
+<style>
+  /* ── Extra styles only for advanced features ── */
+  .sip-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .dark .sip-section {
+    background: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .sip-section h2 { margin-top: 0; }
+  .input-group { margin-bottom: 14px; }
+  .input-group label { display: block; font-weight: 600; margin-bottom: 4px; }
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-sizing: border-box;
+  }
+  .dark .input-group input {
+    background: #2a2a2a;
+    color: white;
+    border-color: #444;
+  }
+  .result-box {
+    background: #f0f7ff;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 15px;
+  }
+  .dark .result-box {
+    background: #1a2a3a;
+    border-left-color: #4da3ff;
+  }
+  .result-box span { font-weight: 700; color: #007bff; }
+  .dark .result-box span { color: #4da3ff; }
+
+  /* Year-wise table */
+  .table-wrap { overflow-x: auto; margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    background: #007bff;
+    color: white;
+    padding: 10px 8px;
+    text-align: right;
+  }
+  th:first-child { text-align: center; }
+  td { padding: 8px; text-align: right; border-bottom: 1px solid #eee; }
+  td:first-child { text-align: center; font-weight: 600; }
+  tr:hover { background: #f5f9ff; }
+  .dark td { border-bottom: 1px solid #333; }
+  .dark tr:hover { background: #252525; }
+  .dark th { background: #0056b3; }
+
+  /* Tab buttons */
+  .tab-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .tab-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2px solid #007bff;
+    background: transparent;
+    color: #007bff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: #007bff;
+    color: white;
+  }
+  .dark .tab-btn { border-color: #4da3ff; color: #4da3ff; }
+  .dark .tab-btn.active, .dark .tab-btn:hover { background: #4da3ff; color: #111; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .highlight-green span { color: #28a745 !important; }
+  .highlight-orange span { color: #fd7e14 !important; }
+
+  @media(max-width:500px){
+    .sip-section { padding: 14px; }
+    table { font-size: 12px; }
+  }
+</style>
+<meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/sip-calculator-advanced.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Advanced SIP Calculator – Monthly Investment Calculator" name="twitter:title"/><meta content="Advanced SIP calculator to calculate monthly investment returns, total investment, estimated returns and total value." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Advanced SIP Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/sip-calculator-advanced.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head>
+<body class="calc-page">
+<!-- ════════════════════════════════════════
+     ORIGINAL CONTENT — NOTHING DELETED
+════════════════════════════════════════ -->
+<h1>Advanced SIP Calculator</h1>
+<p>Calculate your SIP investment returns instantly.</p>
+<br/>
+<label>Monthly Investment (₹)</label>
+<br/>
+<input id="monthly" type="number"/>
+<br/><br/>
+<label>Expected Return Rate (% per year)</label>
+<br/>
+<input id="rate" type="number"/>
+<br/><br/>
+<label>Investment Duration (Years)</label>
+<br/>
+<input id="years" type="number"/>
+<br/><br/>
+<button onclick="calculateSIP()">Calculate SIP</button>
+<br/><br/>
+<h3 id="invested"></h3>
+<h3 id="returns"></h3>
+<h3 id="value"></h3>
+<hr/>
+<!-- ════════════════════════════════════════
+     NEW ADVANCED FEATURES SECTION
+════════════════════════════════════════ -->
+<div class="sip-section">
+<h2>⚡ Advanced SIP Features</h2>
+<p>Fill the basic inputs above, then use any advanced feature below.</p>
+<!-- TAB BUTTONS -->
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showTab('stepup')">📈 Step-Up SIP</button>
+<button class="tab-btn" onclick="showTab('inflation')">💸 Inflation Adjusted</button>
+<button class="tab-btn" onclick="showTab('goal')">🎯 Goal Calculator</button>
+<button class="tab-btn" onclick="showTab('ltcg')">🧾 LTCG Tax</button>
+<button class="tab-btn" onclick="showTab('yearwise')">📊 Year-wise Table</button>
+</div>
+<!-- TAB 1: STEP-UP SIP -->
+<div class="tab-content active" id="tab-stepup">
+<div class="input-group">
+<label>Annual Step-Up % (e.g. 10 means +10% every year)</label>
+<input id="stepup_pct" placeholder="e.g. 10" type="number" value="10"/>
+</div>
+<button onclick="calcStepUp()">Calculate Step-Up SIP</button>
+<br/><br/>
+<div id="stepup_result"></div>
+</div>
+<!-- TAB 2: INFLATION ADJUSTED -->
+<div class="tab-content" id="tab-inflation">
+<div class="input-group">
+<label>Expected Inflation Rate (% per year)</label>
+<input id="inflation_rate" placeholder="e.g. 6" type="number" value="6"/>
+</div>
+<button onclick="calcInflation()">Calculate Real Returns</button>
+<br/><br/>
+<div id="inflation_result"></div>
+</div>
+<!-- TAB 3: GOAL BASED -->
+<div class="tab-content" id="tab-goal">
+<p>Want to reach a target amount? Find out how much to invest monthly.</p>
+<div class="input-group">
+<label>Target Amount (₹)</label>
+<input id="goal_amount" placeholder="e.g. 5000000" type="number"/>
+</div>
+<div class="input-group">
+<label>Expected Return Rate (% per year)</label>
+<input id="goal_rate" placeholder="e.g. 12" type="number" value="12"/>
+</div>
+<div class="input-group">
+<label>Investment Duration (Years)</label>
+<input id="goal_years" placeholder="e.g. 10" type="number" value="10"/>
+</div>
+<button onclick="calcGoal()">Calculate Required SIP</button>
+<br/><br/>
+<div id="goal_result"></div>
+</div>
+<!-- TAB 4: LTCG TAX -->
+<div class="tab-content" id="tab-ltcg">
+<p>Equity mutual fund gains above ₹1 lakh per year are taxed at 10% (LTCG).</p>
+<button onclick="calcLTCG()">Calculate Post-Tax Returns</button>
+<br/><br/>
+<div id="ltcg_result"></div>
+</div>
+<!-- TAB 5: YEAR-WISE TABLE -->
+<div class="tab-content" id="tab-yearwise">
+<button onclick="calcYearwise()">Generate Year-wise Breakdown</button>
+<br/><br/>
+<div id="yearwise_result"></div>
+</div>
+</div>
+<hr/>
+<!-- ════════════════════════════════════════
+     ORIGINAL ABOUT SECTION — NOTHING DELETED
+════════════════════════════════════════ -->
+<script src="../js-calculators/sip-advanced.js"></script>
+<script src="../js/main.js"></script>
+<!-- Advanced features JS inline (no separate file needed) -->
+<script>
+// ── Tab switcher ──────────────────────────────────────────
+function showTab(name){
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── Helper: format Indian currency ───────────────────────
+function inr(n){
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+// ── Helper: get basic inputs ─────────────────────────────
+function getBasicInputs(){
+  let monthly = parseFloat(document.getElementById('monthly').value);
+  let annualRate = parseFloat(document.getElementById('rate').value);
+  let years = parseFloat(document.getElementById('years').value);
+  return { monthly, annualRate, years };
+}
+
+// ── Helper: basic FV ─────────────────────────────────────
+// ✅ FIXED: Effective monthly rate (annual compounding converted to monthly)
+function basicFV(monthly, annualRate, years){
+  let r = Math.pow(1 + annualRate / 100, 1/12) - 1;
+  let n = years * 12;
+  return monthly * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+}
+
+// ── FEATURE 1: Step-Up SIP ───────────────────────────────
+function calcStepUp(){
+  let { monthly, annualRate, years } = getBasicInputs();
+  let stepPct = parseFloat(document.getElementById('stepup_pct').value);
+
+  if(!monthly || !annualRate || !years || isNaN(stepPct)){
+    document.getElementById('stepup_result').innerHTML =
+      '<p style="color:red">Please fill Monthly Investment, Rate and Years above first.</p>';
+    return;
+  }
+
+  // ✅ FIXED: Effective monthly rate
+  let r = Math.pow(1 + annualRate / 100, 1/12) - 1;
+  let totalFV = 0;
+  let totalInvested = 0;
+  let currentMonthly = monthly;
+
+  for(let y = 1; y <= years; y++){
+    // FV of this year's SIP contributions, grown for remaining years
+    let monthsRemaining = (years - y + 1) * 12;
+    let fvThisYear = currentMonthly * ((Math.pow(1+r, 12)-1)/r) * Math.pow(1+r, monthsRemaining - 12);
+    totalFV += fvThisYear;
+    totalInvested += currentMonthly * 12;
+    currentMonthly = currentMonthly * (1 + stepPct / 100);
+  }
+
+  let gains = totalFV - totalInvested;
+
+  document.getElementById('stepup_result').innerHTML = `
+    <div class="result-box">Total Invested (Step-Up): <span>${inr(totalInvested)}</span></div>
+    <div class="result-box highlight-green">Estimated Returns: <span>${inr(gains)}</span></div>
+    <div class="result-box">Maturity Value: <span>${inr(totalFV)}</span></div>
+    <div class="result-box" style="font-size:13px;color:#666">
+      vs Basic SIP Maturity: <b>${inr(basicFV(monthly, annualRate, years))}</b>
+      &nbsp;|&nbsp; Extra Gain from Step-Up: <b style="color:#28a745">${inr(totalFV - basicFV(monthly, annualRate, years))}</b>
+    </div>
+  `;
+}
+
+// ── FEATURE 2: Inflation Adjusted Returns ────────────────
+function calcInflation(){
+  let { monthly, annualRate, years } = getBasicInputs();
+  let inflationRate = parseFloat(document.getElementById('inflation_rate').value);
+
+  if(!monthly || !annualRate || !years || isNaN(inflationRate)){
+    document.getElementById('inflation_result').innerHTML =
+      '<p style="color:red">Please fill Monthly Investment, Rate and Years above first.</p>';
+    return;
+  }
+
+  let fv = basicFV(monthly, annualRate, years);
+  let invested = monthly * years * 12;
+
+  // Real return rate using Fisher equation: (1+nominal)/(1+inflation) - 1
+  let realRate = ((1 + annualRate/100) / (1 + inflationRate/100) - 1) * 100;
+  let realFV = basicFV(monthly, realRate, years);
+  let realGains = realFV - invested;
+
+  // Purchasing power of maturity value in today's money
+  let purchasingPower = fv / Math.pow(1 + inflationRate/100, years);
+
+  document.getElementById('inflation_result').innerHTML = `
+    <div class="result-box">Nominal Maturity Value: <span>${inr(fv)}</span></div>
+    <div class="result-box highlight-orange">Inflation-Adjusted Real Value: <span>${inr(realFV)}</span></div>
+    <div class="result-box">Purchasing Power in Today's Money: <span>${inr(purchasingPower)}</span></div>
+    <div class="result-box" style="font-size:13px">
+      Nominal Return Rate: <b>${annualRate}%</b> &nbsp;|&nbsp;
+      Real Return Rate (after ${inflationRate}% inflation): <b>${realRate.toFixed(2)}%</b>
+    </div>
+  `;
+}
+
+// ── FEATURE 3: Goal-Based Reverse Calculation ────────────
+function calcGoal(){
+  let goalAmt = parseFloat(document.getElementById('goal_amount').value);
+  let goalRate = parseFloat(document.getElementById('goal_rate').value);
+  let goalYears = parseFloat(document.getElementById('goal_years').value);
+
+  if(!goalAmt || !goalRate || !goalYears){
+    document.getElementById('goal_result').innerHTML =
+      '<p style="color:red">Please fill all Goal Calculator fields.</p>';
+    return;
+  }
+
+  // ✅ FIXED: Effective monthly rate
+  let r = Math.pow(1 + goalRate / 100, 1/12) - 1;
+  let n = goalYears * 12;
+
+  // Reverse SIP formula: P = FV * r / [((1+r)^n - 1) * (1+r)]
+  let requiredMonthly = goalAmt * r / ((Math.pow(1+r, n) - 1) * (1+r));
+  let totalInvested = requiredMonthly * n;
+  let gains = goalAmt - totalInvested;
+
+  document.getElementById('goal_result').innerHTML = `
+    <div class="result-box">Required Monthly SIP: <span>${inr(requiredMonthly)}</span></div>
+    <div class="result-box">Total You Will Invest: <span>${inr(totalInvested)}</span></div>
+    <div class="result-box highlight-green">Your Gains: <span>${inr(gains)}</span></div>
+    <div class="result-box">🎯 Target Amount: <span>${inr(goalAmt)}</span></div>
+  `;
+}
+
+// ── FEATURE 4: LTCG Tax Calculation ──────────────────────
+function calcLTCG(){
+  let { monthly, annualRate, years } = getBasicInputs();
+
+  if(!monthly || !annualRate || !years){
+    document.getElementById('ltcg_result').innerHTML =
+      '<p style="color:red">Please fill Monthly Investment, Rate and Years above first.</p>';
+    return;
+  }
+
+  let fv = basicFV(monthly, annualRate, years);
+  let invested = monthly * years * 12;
+  let totalGains = fv - invested;
+
+  // LTCG: 10% tax on gains above ₹1 lakh
+  let taxableGains = Math.max(0, totalGains - 100000);
+  let ltcgTax = taxableGains * 0.10;
+  let postTaxValue = fv - ltcgTax;
+  let postTaxGains = postTaxValue - invested;
+
+  document.getElementById('ltcg_result').innerHTML = `
+    <div class="result-box">Gross Maturity Value: <span>${inr(fv)}</span></div>
+    <div class="result-box">Total Gains: <span>${inr(totalGains)}</span></div>
+    <div class="result-box highlight-orange">LTCG Tax (10% on gains above ₹1L): <span>${inr(ltcgTax)}</span></div>
+    <div class="result-box highlight-green">Post-Tax Maturity Value: <span>${inr(postTaxValue)}</span></div>
+    <div class="result-box">Post-Tax Gains: <span>${inr(postTaxGains)}</span></div>
+    <p style="font-size:12px;color:#888;">* LTCG tax applies to equity mutual funds. Debt funds taxed as per income slab.</p>
+  `;
+}
+
+// ── FEATURE 5: Year-wise Breakdown Table ─────────────────
+function calcYearwise(){
+  let { monthly, annualRate, years } = getBasicInputs();
+
+  if(!monthly || !annualRate || !years){
+    document.getElementById('yearwise_result').innerHTML =
+      '<p style="color:red">Please fill Monthly Investment, Rate and Years above first.</p>';
+    return;
+  }
+
+  // ✅ FIXED: Effective monthly rate (same as main formula)
+  let r = Math.pow(1 + annualRate / 100, 1/12) - 1;
+  let rows = '';
+
+  for(let y = 1; y <= years; y++){
+    let n = y * 12;
+    let fv = monthly * ((Math.pow(1+r, n) - 1) / r) * (1+r);
+    let inv = monthly * n;
+    let gains = fv - inv;
+    let growthPct = ((fv / inv - 1) * 100).toFixed(1);
+
+    rows += `
+      <tr>
+        <td>Year ${y}</td>
+        <td>${inr(inv)}</td>
+        <td>${inr(gains)}</td>
+        <td>${inr(fv)}</td>
+        <td>${growthPct}%</td>
+      </tr>`;
+  }
+
+  document.getElementById('yearwise_result').innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Invested</th>
+            <th>Gains</th>
+            <th>Total Value</th>
+            <th>Total Return %</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+}
+</script>
+
+<div class="content-section">

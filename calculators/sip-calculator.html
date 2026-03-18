@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<title>SIP Calculator – Calculate Mutual Fund SIP Returns</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Free SIP calculator to estimate mutual fund returns based on monthly investment, interest rate and time period." name="description"/>
+<link href="https://calcbeast.vercel.app/calculators/sip-calculator.html" rel="canonical"/>
+<!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/>
+<style>
+table{
+  border-collapse:collapse;
+  width:100%;
+  margin-top:20px;
+}
+td,th{
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:center;
+}
+.bar{
+  width:100%;
+  height:20px;
+  background:#ddd;
+  border-radius:5px;
+  margin-top:10px;
+}
+.fill{
+  height:20px;
+  background:#4CAF50;
+  width:0%;
+  border-radius:5px;
+}
+</style>
+<meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/sip-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="SIP Calculator – Calculate Mutual Fund SIP Returns" name="twitter:title"/><meta content="Free SIP calculator to estimate mutual fund returns based on monthly investment, interest rate and time period." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "SIP Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/sip-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head>
+<body class="calc-page">
+<nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>SIP Calculator</h1>
+<p>Estimate returns from your SIP investment.</p>
+<label>Monthly Investment (₹)</label>
+<br/>
+<input id="investment" type="number"/>
+<br/><br/>
+<label>Interest Rate (% per year)</label>
+<br/>
+<input id="rate" type="number"/>
+<br/><br/>
+<label>Time (Years)</label>
+<br/>
+<input id="years" type="number"/>
+<br/><br/>
+<button onclick="calculateSIP()">Calculate SIP</button>
+<br/><br/>
+<div id="summary"></div>
+<div class="bar">
+<div class="fill" id="bar"></div>
+</div>
+<ul>
+<li><strong>Total Investment:</strong> <span id="invested"></span></li>
+<li><strong>Total Returns:</strong> <span id="returns"></span></li>
+<li><strong>Wealth Gained:</strong> <span id="gain"></span></li>
+</ul>
+<table>
+<tr>
+<th>Year</th>
+<th>Investment</th>
+<th>Value</th>
+</tr>
+<tbody id="table"></tbody>
+</table>
+<script>
+function calculateSIP(){
+
+  let monthly = parseFloat(document.getElementById("investment").value);
+  let annualRate = parseFloat(document.getElementById("rate").value);
+  let years = parseFloat(document.getElementById("years").value);
+  let months = years * 12;
+
+  // ✅ FIXED: Effective monthly rate (same formula as reference app)
+  let rate = Math.pow(1 + annualRate / 100, 1/12) - 1;
+
+  let future = monthly * ((Math.pow(1 + rate, months) - 1) / rate) * (1 + rate);
+  let invested = monthly * months;
+  let gain = future - invested;
+
+  document.getElementById("invested").innerHTML = invested.toFixed(2);
+  document.getElementById("returns").innerHTML = future.toFixed(2);
+  document.getElementById("gain").innerHTML = gain.toFixed(2);
+
+  document.getElementById("summary").innerHTML =
+    "Estimated maturity amount: ₹" + future.toFixed(2);
+
+  let percent = (gain / future) * 100;
+  document.getElementById("bar").style.width = percent + "%";
+
+  // ✅ FIXED: Table uses same effective rate formula — matches main result
+  let table = "";
+  for(let y = 1; y <= years; y++){
+    let n = y * 12;
+    let yv = monthly * ((Math.pow(1 + rate, n) - 1) / rate) * (1 + rate);
+    let yi = monthly * n;
+    table += "<tr><td>" + y + "</td><td>" + yi.toFixed(2) + "</td><td>" + yv.toFixed(2) + "</td></tr>";
+  }
+
+  document.getElementById("table").innerHTML = table;
+}
+</script>
+<script src="../js/main.js"></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"SIP Calculator",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"All",
+  "url":"https://calcbeast.vercel.app/calculators/sip-calculator.html"
+}
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is SIP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SIP stands for Systematic Investment Plan which allows investors to invest a fixed amount regularly in mutual funds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does SIP grow money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SIP investments grow through compounding returns over time."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

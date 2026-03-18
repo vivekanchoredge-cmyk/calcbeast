@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Data Storage Converter – Convert MB, GB, KB &amp; TB</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free storage converter to convert megabytes to gigabytes, kilobytes and terabytes instantly." name="description"/><link href="https://calcbeast.vercel.app/calculators/storage-converter.html" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/storage-converter.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Data Storage Converter – Convert MB, GB, KB &amp; TB" name="twitter:title"/><meta content="Free storage converter to convert megabytes to gigabytes, kilobytes and terabytes instantly." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Data Storage Converter",
+      "item": "https://calcbeast.vercel.app/calculators/storage-converter.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Data Storage Converter</h1><p>Convert data storage units easily.</p><label>Megabytes (MB)</label>
+<br/>
+<input id="mb" type="number"/>
+<br/><br/>
+<button onclick="convert()">Convert</button>
+<br/><br/>
+<div id="result"></div><ul><li><strong>Gigabytes (GB):</strong> <span id="gb"></span></li><li><strong>Kilobytes (KB):</strong> <span id="kb"></span></li><li><strong>Terabytes (TB):</strong> <span id="tb"></span></li></ul><table><tr>
+<th>Unit</th>
+<th>Value</th>
+</tr><tr>
+<td>KB</td>
+<td id="kb2"></td>
+</tr><tr>
+<td>GB</td>
+<td id="gb2"></td>
+</tr><tr>
+<td>TB</td>
+<td id="tb2"></td>
+</tr></table><script>
+
+function convert(){
+
+let mb=parseFloat(document.getElementById("mb").value)
+
+let kb=mb*1024
+
+let gb=mb/1024
+
+let tb=mb/1048576
+
+document.getElementById("kb").innerHTML=kb.toFixed(2)
+
+document.getElementById("gb").innerHTML=gb.toFixed(4)
+
+document.getElementById("tb").innerHTML=tb.toFixed(6)
+
+document.getElementById("kb2").innerHTML=kb.toFixed(2)
+
+document.getElementById("gb2").innerHTML=gb.toFixed(4)
+
+document.getElementById("tb2").innerHTML=tb.toFixed(6)
+
+document.getElementById("result").innerHTML=
+mb+" MB converted to multiple storage units"
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Data Storage Converter",
+"applicationCategory":"UtilityApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/storage-converter.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many MB are in 1 GB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1 GB equals 1024 MB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a megabyte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A megabyte (MB) is a unit of digital information commonly used to measure file sizes."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

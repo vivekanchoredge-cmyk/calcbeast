@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Percentage Calculator – Calculate Percentage Easily</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free percentage calculator to calculate percentage, percentage increase and percentage difference instantly." name="description"/><link href="https://calcbeast.vercel.app/calculators/percentage-calculator.html" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/percentage-calculator.html" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Percentage Calculator – Calculate Percentage Easily" name="twitter:title"/><meta content="Free percentage calculator to calculate percentage, percentage increase and percentage difference instantly." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Percentage Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/percentage-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Percentage Calculator</h1><p>Calculate percentage using different methods.</p><h2>1. Percentage of a Number</h2><label>Total Number</label>
+<br/>
+<input id="total" type="number"/>
+<br/><br/>
+<label>Percentage (%)</label>
+<br/>
+<input id="percent" type="number"/>
+<br/><br/>
+<button onclick="calcPercent()">Calculate</button>
+<p id="result1"></p><hr/><h2>2. Percentage Increase / Decrease</h2><label>Old Value</label>
+<br/>
+<input id="old" type="number"/>
+<br/><br/>
+<label>New Value</label>
+<br/>
+<input id="new" type="number"/>
+<br/><br/>
+<button onclick="calcChange()">Calculate Change</button>
+<p id="result2"></p><hr/><h2>3. What Percent is X of Y</h2><label>Part</label>
+<br/>
+<input id="part" type="number"/>
+<br/><br/>
+<label>Total</label>
+<br/>
+<input id="whole" type="number"/>
+<br/><br/>
+<button onclick="calcOf()">Calculate</button>
+<p id="result3"></p><script>
+
+function calcPercent(){
+
+let total=document.getElementById("total").value
+
+let percent=document.getElementById("percent").value
+
+let result=(total*percent)/100
+
+document.getElementById("result1").innerHTML="Result: "+result
+
+}
+
+
+function calcChange(){
+
+let old=document.getElementById("old").value
+
+let newv=document.getElementById("new").value
+
+let change=((newv-old)/old)*100
+
+document.getElementById("result2").innerHTML="Change: "+change.toFixed(2)+"%"
+
+}
+
+
+function calcOf(){
+
+let part=document.getElementById("part").value
+
+let whole=document.getElementById("whole").value
+
+let percent=(part/whole)*100
+
+document.getElementById("result3").innerHTML="Percentage: "+percent.toFixed(2)+"%"
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A percentage represents a number as a fraction of 100."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the part by the total and multiply by 100."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">
