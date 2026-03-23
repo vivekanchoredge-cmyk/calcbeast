@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Ovulation Calculator – Fertility &amp; Ovulation Date Predictor</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free ovulation calculator to estimate fertile window, ovulation day and next period prediction." name="description"/><link href="https://calcbeast.vercel.app/calculators/ovulation-calculator" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/ovulation-calculator" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Ovulation Calculator – Fertility &amp; Ovulation Date Predictor" name="twitter:title"/><meta content="Free ovulation calculator to estimate fertile window, ovulation day and next period prediction." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ovulation Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/ovulation-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Ovulation Calculator</h1><p>Predict ovulation date and fertile window.</p><label>First Day of Last Period</label>
+<br/>
+<input id="cycle" type="date"/>
+<br/><br/>
+<label>Average Cycle Length (Days)</label>
+<br/>
+<input id="length" type="number" value="28"/>
+<br/><br/>
+<button onclick="calcOvulation()">Calculate</button>
+<br/><br/>
+<div id="result"></div><h2>Results</h2><ul><li><strong>Ovulation Day:</strong> <span id="ovulation"></span></li><li><strong>Fertile Window:</strong> <span id="fertile"></span></li><li><strong>Next Period:</strong> <span id="next"></span></li></ul><script>
+
+function calcOvulation(){
+
+let cycle=new Date(document.getElementById("cycle").value)
+
+let length=parseInt(document.getElementById("length").value)
+
+let ovulation=new Date(cycle)
+
+ovulation.setDate(cycle.getDate()+length-14)
+
+let fertileStart=new Date(ovulation)
+fertileStart.setDate(ovulation.getDate()-4)
+
+let fertileEnd=new Date(ovulation)
+fertileEnd.setDate(ovulation.getDate()+1)
+
+let nextPeriod=new Date(cycle)
+nextPeriod.setDate(cycle.getDate()+length)
+
+document.getElementById("ovulation").innerHTML=ovulation.toDateString()
+
+document.getElementById("fertile").innerHTML=
+fertileStart.toDateString()+" - "+fertileEnd.toDateString()
+
+document.getElementById("next").innerHTML=nextPeriod.toDateString()
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"What is ovulation?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Ovulation is the release of an egg from the ovary during the menstrual cycle."
+}
+},
+{
+"@type":"Question",
+"name":"When is the fertile window?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"The fertile window occurs around 4 to 5 days before ovulation."
+}
+}
+]
+}
+
+</script>
+<div class="content-section">

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Random Number Generator – Generate Random Numbers Online</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free random number generator to generate random numbers between a minimum and maximum value." name="description"/><link href="https://calcbeast.vercel.app/calculators/random-number" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/random-number" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Random Number Generator – Generate Random Numbers Online" name="twitter:title"/><meta content="Free random number generator to generate random numbers between a minimum and maximum value." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Random Number Generator",
+      "item": "https://calcbeast.vercel.app/calculators/random-number.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Random Number Generator</h1><p>Generate random numbers instantly.</p><label>Minimum Number</label>
+<br/>
+<input id="min" type="number"/>
+<br/><br/>
+<label>Maximum Number</label>
+<br/>
+<input id="max" type="number"/>
+<br/><br/>
+<label>How Many Numbers?</label>
+<br/>
+<input id="count" type="number" value="1"/>
+<br/><br/>
+<button onclick="generate()">Generate</button>
+<br/><br/>
+<div id="result"></div><script>
+
+function generate(){
+
+let min=parseFloat(document.getElementById("min").value)
+
+let max=parseFloat(document.getElementById("max").value)
+
+let count=parseInt(document.getElementById("count").value)
+
+let output=""
+
+for(let i=0;i<count;i++){
+
+let rand=Math.floor(Math.random()*(max-min+1))+min
+
+output+=rand+"<br>"
+
+}
+
+document.getElementById("result").innerHTML=output
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Random Number Generator",
+"applicationCategory":"UtilityApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/random-number.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a random number generator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A random number generator produces unpredictable numbers within a given range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are random numbers used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Random numbers are used in games, statistics, simulations, cryptography and testing."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

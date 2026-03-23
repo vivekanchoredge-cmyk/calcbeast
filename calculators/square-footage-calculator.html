@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Square Footage Calculator – Calculate Area of a Room</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free square footage calculator to calculate room area in square feet, square meters and square yards." name="description"/><link href="https://calcbeast.vercel.app/calculators/square-footage-calculator" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/square-footage-calculator" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Square Footage Calculator – Calculate Area of a Room" name="twitter:title"/><meta content="Free square footage calculator to calculate room area in square feet, square meters and square yards." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Square Footage Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/square-footage-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Square Footage Calculator</h1><p>Calculate the area of a room or space.</p><label>Length (ft)</label>
+<br/>
+<input id="length" type="number"/>
+<br/><br/>
+<label>Width (ft)</label>
+<br/>
+<input id="width" type="number"/>
+<br/><br/>
+<button onclick="area()">Calculate Area</button>
+<br/><br/>
+<div id="result"></div><ul><li><strong>Area (sq ft):</strong> <span id="sqft"></span></li><li><strong>Area (sq meter):</strong> <span id="sqm"></span></li><li><strong>Area (sq yard):</strong> <span id="sqyard"></span></li></ul><table><tr>
+<th>Length</th>
+<th>Width</th>
+<th>Area</th>
+</tr><tbody id="table"></tbody></table><script>
+
+function area(){
+
+let length=parseFloat(document.getElementById("length").value)
+
+let width=parseFloat(document.getElementById("width").value)
+
+let sqft=length*width
+
+let sqm=sqft*0.092903
+
+let sqyard=sqft/9
+
+document.getElementById("sqft").innerHTML=sqft.toFixed(2)
+
+document.getElementById("sqm").innerHTML=sqm.toFixed(2)
+
+document.getElementById("sqyard").innerHTML=sqyard.toFixed(2)
+
+document.getElementById("result").innerHTML=
+"Room area is "+sqft.toFixed(2)+" square feet"
+
+let table="<tr><td>"+length+" ft</td><td>"+width+" ft</td><td>"+sqft.toFixed(2)+" sq ft</td></tr>"
+
+document.getElementById("table").innerHTML=table
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Square Footage Calculator",
+"applicationCategory":"UtilityApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/square-footage-calculator.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate square footage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Square footage is calculated by multiplying the length and width of a space."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is square footage used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Square footage is commonly used in real estate, flooring, construction and interior design."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

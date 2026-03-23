@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>BMI Calculator – Advanced Body Mass Index Calculator</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free advanced BMI calculator with gender, multiple height units and weight units. Calculate BMI, body category and healthy weight range instantly." name="description"/><meta content="bmi calculator, body mass index calculator, calculate bmi online, healthy weight calculator" name="keywords"/><link href="https://calcbeast.vercel.app/calculators/bmi-category-calculator" rel="canonical"/><meta content="BMI Calculator – Advanced Body Mass Index Calculator" property="og:title"/>
+<meta content="Calculate BMI, body category and healthy weight range instantly." property="og:description"/><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/bmi-category-calculator" property="og:url"/><meta content="website" property="og:type"/>
+<meta content="website" property="og:type"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><meta content="summary_large_image" name="twitter:card"/><meta content="BMI Calculator – Advanced Body Mass Index Calculator" name="twitter:title"/><meta content="Free advanced BMI calculator with gender, multiple height units and weight units. Calculate BMI, body category and healthy weight range instantly." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "BMI Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/bmi-category-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>BMI Calculator</h1><p>Calculate your Body Mass Index using multiple units.</p><br/><label>Gender</label><br/>
+<select id="gender">
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select><br/><br/>
+<label>Weight</label><br/>
+<input id="weight" type="number"/><select id="weightUnit">
+<option value="kg">KG</option>
+<option value="lb">Pounds</option>
+</select><br/><br/>
+<label>Height Unit</label><br/>
+<select id="heightUnit">
+<option value="meter">Meter</option>
+<option value="cm">Centimeter</option>
+<option value="feet">Feet + Inch</option>
+</select><br/><br/>
+<div id="meterInput">
+<input id="heightMeter" placeholder="Height in meter" type="number"/>
+</div><div id="cmInput" style="display:none">
+<input id="heightCM" placeholder="Height in CM" type="number"/>
+</div><div id="feetInput" style="display:none">
+<input id="feet" placeholder="Feet" type="number"/>
+<input id="inch" placeholder="Inch" type="number"/>
+</div><br/><button onclick="calculateBMI()">Calculate BMI</button>
+<br/><br/>
+<h3 id="result"></h3><p id="healthyRange"></p><hr/><h2>BMI Categories</h2><table border="1"><tr>
+<th>BMI Range</th>
+<th>Category</th>
+</tr><tr>
+<td>Below 18.5</td>
+<td>Underweight</td>
+</tr><tr>
+<td>18.5 – 24.9</td>
+<td>Normal Weight</td>
+</tr><tr>
+<td>25 – 29.9</td>
+<td>Overweight</td>
+</tr><tr>
+<td>30 and above</td>
+<td>Obese</td>
+</tr></table><hr/><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"What is BMI?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"BMI stands for Body Mass Index which measures body weight relative to height."
+}
+},
+{
+"@type":"Question",
+"name":"Is BMI calculator accurate?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"BMI provides a general estimate of body weight category."
+}
+},
+{
+"@type":"Question",
+"name":"Is this calculator free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes this BMI calculator is completely free."
+}
+}
+]
+}
+
+</script>
+<div class="content-section">

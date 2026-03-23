@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Probability Calculator – Calculate Event Probability</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free probability calculator to calculate event probability, percentage probability and odds instantly." name="description"/><link href="https://calcbeast.vercel.app/calculators/probability-calculator" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+.bar{
+width:100%;
+height:20px;
+background:#ddd;
+border-radius:5px;
+margin-top:10px;
+}
+
+.fill{
+height:20px;
+background:#2196F3;
+width:0%;
+border-radius:5px;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/probability-calculator" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Probability Calculator – Calculate Event Probability" name="twitter:title"/><meta content="Free probability calculator to calculate event probability, percentage probability and odds instantly." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Probability Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/probability-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Probability Calculator</h1><p>Calculate probability of an event.</p><label>Favorable Outcomes</label>
+<br/>
+<input id="fav" type="number"/>
+<br/><br/>
+<label>Total Outcomes</label>
+<br/>
+<input id="total" type="number"/>
+<br/><br/>
+<button onclick="prob()">Calculate</button>
+<p id="result"></p><div class="bar">
+<div class="fill" id="bar"></div>
+</div><script>
+
+function prob(){
+
+let fav=parseFloat(document.getElementById("fav").value)
+
+let total=parseFloat(document.getElementById("total").value)
+
+let probability=fav/total
+
+let percent=probability*100
+
+document.getElementById("result").innerHTML=
+"Probability: "+probability.toFixed(4)+
+"<br>Percentage: "+percent.toFixed(2)+"%"+
+"<br>Odds: "+fav+" : "+(total-fav)
+
+document.getElementById("bar").style.width=Math.min(percent,100)+"%"
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Probability Calculator",
+"applicationCategory":"Calculator",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/probability-calculator.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is probability?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Probability measures how likely an event is to occur and ranges between 0 and 1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is probability calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Probability = Favorable Outcomes / Total Outcomes."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">

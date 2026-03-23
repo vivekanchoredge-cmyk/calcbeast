@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><!-- Performance: Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/><title>Time Duration Calculator – Calculate Time Difference</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Free time duration calculator to calculate difference between two times in hours and minutes." name="description"/><link href="https://calcbeast.vercel.app/calculators/time-duration-calculator" rel="canonical"/><!-- Google AdSense -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7007363237068164"></script><link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/content.css" rel="stylesheet"/><style>
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+td,th{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+</style><meta content="https://calcbeast.vercel.app/favicon.png" property="og:image"/><meta content="https://calcbeast.vercel.app/calculators/time-duration-calculator" property="og:url"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Time Duration Calculator – Calculate Time Difference" name="twitter:title"/><meta content="Free time duration calculator to calculate difference between two times in hours and minutes." name="twitter:description"/><meta content="https://calcbeast.vercel.app/favicon.png" name="twitter:image"/><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://calcbeast.vercel.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://calcbeast.vercel.app/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Time Duration Calculator",
+      "item": "https://calcbeast.vercel.app/calculators/time-duration-calculator.html"
+    }
+  ]
+}</script><link href="../favicon.png" rel="icon" type="image/png"/>
+<style>
+.calc-nav{background:#111;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #222;}
+.calc-nav a{color:#4da3ff;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.calc-nav a:hover{color:#8ec8ff;}
+.calc-nav span{color:#555;font-size:13px;}
+.calc-main{max-width:860px;margin:0 auto;padding:32px 24px 48px;}
+</style>
+</head><body class="calc-page"><nav class="calc-nav"><a href="../index.html">⬅ CalcBeast</a><span>Free Online Calculator</span></nav>
+<h1>Time Duration Calculator</h1><p>Calculate the difference between two times.</p><label>Start Time</label>
+<br/>
+<input id="start" type="time"/>
+<br/><br/>
+<label>End Time</label>
+<br/>
+<input id="end" type="time"/>
+<br/><br/>
+<button onclick="calcTime()">Calculate</button>
+<br/><br/>
+<div id="result"></div><ul><li><strong>Duration (Hours):</strong> <span id="hours"></span></li><li><strong>Duration (Minutes):</strong> <span id="minutes"></span></li></ul><table><tr>
+<th>Start Time</th>
+<th>End Time</th>
+<th>Duration</th>
+</tr><tbody id="table"></tbody></table><script>
+
+function calcTime(){
+
+let start=document.getElementById("start").value
+
+let end=document.getElementById("end").value
+
+let startTime=new Date("1970-01-01T"+start)
+
+let endTime=new Date("1970-01-01T"+end)
+
+let diff=(endTime-startTime)/1000/60
+
+let hours=Math.floor(diff/60)
+
+let minutes=diff%60
+
+document.getElementById("hours").innerHTML=hours+" hours "+minutes+" minutes"
+
+document.getElementById("minutes").innerHTML=diff+" minutes"
+
+document.getElementById("result").innerHTML=
+"Total duration: "+hours+"h "+minutes+"m"
+
+let table="<tr><td>"+start+"</td><td>"+end+"</td><td>"+hours+"h "+minutes+"m</td></tr>"
+
+document.getElementById("table").innerHTML=table
+
+}
+
+</script><script src="../js/main.js"></script><script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Time Duration Calculator",
+"applicationCategory":"UtilityApplication",
+"operatingSystem":"All",
+"url":"https://calcbeast.vercel.app/calculators/time-duration-calculator.html"
+}
+
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate time duration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Subtract the start time from the end time to determine the duration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is a time duration calculator used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is useful for work hours, travel time, project scheduling and daily planning."
+      }
+    }
+  ]
+}</script>
+<div class="content-section">
